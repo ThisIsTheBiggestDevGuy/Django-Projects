@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2>Confirm Delete</h2>
+    <p>Are you sure you want to delete the following comment?</p>
+    <div>
+        <p>{{ object.author.username }} says:</p>
+        <p>{{ object.content }}</p>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirm</button>
+        <a href="{% url 'post-detail' object.post.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+{% endblock content %}
